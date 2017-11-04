@@ -19,100 +19,6 @@ public class findSurface : MonoBehaviour {
     public static Matrix<double> element;
 
 
-
-    public static Matrix<double> readNodes()
-    {
-        
-        string line;
-        List<double> nodes = new List<double>();
-
-     
-
-        System.IO.StreamReader nodes_file = new System.IO.StreamReader("./assets/sphere_nodes.txt");
-        while ((line = nodes_file.ReadLine()) != null)
-        {
-
-            char[] delimiterChars = { ' ',','};
-
-            //Debug.Log(line);
-            string[] node_chars = line.Split(delimiterChars);
-            int n;
-            foreach (string s in node_chars)
-            {
-               
-                    nodes.Add(Convert.ToDouble(s));
-            
-            }
-
-        }
-
-        nodes_file.Close();
-        //Debug.Log(nodes.Count/3);
-        Matrix<double> node = Matrix<double>.Build.Dense(nodes.Count/3, 3);
-
-        int counter = 0;
-
-        for (int i = 0; i < (nodes.Count / 3); i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-        
-
-                    node[i, j] = nodes[counter];
-                counter++;
-            }
-        }
-
-        return node;
-
-    }
-
-    public static Matrix<double> readElements()
-    {
-
-        string line;
-        List<double> elements = new List<double>();
-
-        System.IO.StreamReader element_file = new System.IO.StreamReader(@"./assets/sphere_elements.txt");
-        while ((line = element_file.ReadLine()) != null)
-        {
-
-            char[] delimiterChars = { ' ', ',','N' };
-
-            string[] element_chars = line.Split(delimiterChars);
-
-            foreach (string s in element_chars)
-            {
-                
-                    elements.Add(Convert.ToDouble(s));
-                
-            }
-
-        }
-
-        element_file.Close();
-
-        Matrix<double> element = Matrix<double>.Build.Dense(elements.Count / 4, 4);
-
-        int counter = 0;
-
-        for (int i = 0; i < (elements.Count / 4); i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-
-                
-
-                element[i, j] = elements[counter];
-                counter++;
-            }
-        }
-
-        return element;
-
-    }
-
-
       
 
 	void Start () {
@@ -298,6 +204,98 @@ public class findSurface : MonoBehaviour {
             Debug.Log(element);
             Debug.Log("Row Count: " + element.RowCount);*/
         }
+
+    }
+
+    public static Matrix<double> readNodes()
+    {
+        
+        string line;
+        List<double> nodes = new List<double>();
+
+     
+
+        System.IO.StreamReader nodes_file = new System.IO.StreamReader("./assets/sphere_nodes.txt");
+        while ((line = nodes_file.ReadLine()) != null)
+        {
+
+            char[] delimiterChars = { ' ',','};
+
+            //Debug.Log(line);
+            string[] node_chars = line.Split(delimiterChars);
+            int n;
+            foreach (string s in node_chars)
+            {
+               
+                    nodes.Add(Convert.ToDouble(s));
+            
+            }
+
+        }
+
+        nodes_file.Close();
+        //Debug.Log(nodes.Count/3);
+        Matrix<double> node = Matrix<double>.Build.Dense(nodes.Count/3, 3);
+
+        int counter = 0;
+
+        for (int i = 0; i < (nodes.Count / 3); i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+        
+
+                    node[i, j] = nodes[counter];
+                counter++;
+            }
+        }
+
+        return node;
+
+    }
+
+    public static Matrix<double> readElements()
+    {
+
+        string line;
+        List<double> elements = new List<double>();
+
+        System.IO.StreamReader element_file = new System.IO.StreamReader(@"./assets/sphere_elements.txt");
+        while ((line = element_file.ReadLine()) != null)
+        {
+
+            char[] delimiterChars = { ' ', ',','N' };
+
+            string[] element_chars = line.Split(delimiterChars);
+
+            foreach (string s in element_chars)
+            {
+                
+                    elements.Add(Convert.ToDouble(s));
+                
+            }
+
+        }
+
+        element_file.Close();
+
+        Matrix<double> element = Matrix<double>.Build.Dense(elements.Count / 4, 4);
+
+        int counter = 0;
+
+        for (int i = 0; i < (elements.Count / 4); i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+
+                
+
+                element[i, j] = elements[counter];
+                counter++;
+            }
+        }
+
+        return element;
 
     }
 
