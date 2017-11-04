@@ -4,5 +4,5 @@ This algorithm generates and visualizes the surface of a tetrahedral mesh in the
 
 By adjusting the parameters of the function to give a min-edge length of 0.1, we are given a tetrahedralized mesh of the sphere with 70 nodes and 198 tetrahedrons, organized as matrices in the 2 text files sphere_nodes.txt and sphere_elements.txt. 
 
-The algorithm to generate the surface mesh is written in “assets/findSurface.cs”.
+The algorithm to generate the surface mesh is written in “Assets/findSurface.cs”.
  
