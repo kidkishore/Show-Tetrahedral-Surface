@@ -9,9 +9,7 @@ using MathNet.Numerics.LinearAlgebra.Double;
 
 public class findSurface : MonoBehaviour {
 
-	// Use this for initialization
 
-    //Mesh m = new Mesh();
 
     GameObject tet;
     MeshFilter meshFilter;
@@ -22,8 +20,6 @@ public class findSurface : MonoBehaviour {
       
 
 	void Start () {
-
-        
 
         node = readNodes();
         element = readElements();
@@ -41,7 +37,6 @@ public class findSurface : MonoBehaviour {
         Matrix<double> faces = buildFaces(element, numElements);
 
         //sort each row in ascending order horizontally
-
         faces = sortRows(faces, numElements);
 
        
@@ -52,14 +47,10 @@ public class findSurface : MonoBehaviour {
 
         int numFaces = surface.RowCount;
 
-        //Vector<double> surfaceTets = determineSurfaceTets(faces,surface, numFaces);
 
 
 
         //create mesh
-
-       
-
         Vector3[] vertices = new Vector3[numNodes];
 
         for (int i = 0; i < numNodes; i++)  //fill in the vertices matrix
@@ -128,83 +119,6 @@ public class findSurface : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
-        //int numElements = element.RowCount;
-        //int numNodes = node.RowCount;
-
-        if (Input.GetKeyDown("d"))
-        {
-            /*
-
-            
-
-
-            //element.RemoveRow(surfaceTets[i]);
-            numElements--;
-
-
-            //4 choose 3 to create 4 faces for each of the elements
-            Matrix<double> faces = buildFaces(element, numElements);
-
-            //sort each row in ascending order horizontally
-
-            faces = sortRows(faces, numElements);
-
-
-
-            Matrix<double> surface = determineSurfaceFaces(faces, numElements);
-
-            int numFaces = surface.RowCount;
-
-            Vector<double> surfaceTets = determineSurfaceTets(faces, surface, numFaces);
-            //create mesh
-
-
-
-
-            Vector3[] vert = new Vector3[numNodes];
-
-            for (int i = 0; i < numNodes; i++)  //fill in the vertices matrix
-            {
-                vert[i] = new Vector3((float)(node[i, 0]), (float)(node[i, 1]), (float)(node[i, 2]));
-            }
-
-
-            int[] tri = new int[surface.RowCount * 3];
-
-            int z = 0;
-
-            for (int j = 0; j < surface.RowCount; j++)
-            {
-                for (int q = 0; q < 3; q++)
-                {
-                    tri[z] = (int)(surface[j, q]) - 1;
-                    z++;
-                }
-            }
-
-            Vector3[] vertices = new Vector3[numNodes];
-
-            for (int i = 0; i < numNodes; i++)  //fill in the vertices matrix
-            {
-                vertices[i] = new Vector3((float)(node[i, 0]), (float)(node[i, 1]), (float)(node[i, 2]));
-            }
-
-            //tri = flipFaces(surface, surface.RowCount, tri);
-
-            Mesh m = new Mesh();
-
-            m.vertices = vert;
-            m.triangles = tri;
-
-            //m.RecalculateNormals();
-            meshFilter.mesh = m;
-
-
-            Debug.Log(element);
-            Debug.Log("Row Count: " + element.RowCount);*/
-        }
-
     }
 
     public static Matrix<double> readNodes()
